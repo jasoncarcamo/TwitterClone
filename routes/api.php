@@ -22,6 +22,10 @@ Route::group(['prefix' => 'register'], function () {
     Route::post('/', 'RegisterController@register')->name('register');
 });
 
+Route::group(['prefix' => 'login'], function () {
+    Route::post('/', 'LoginController@login')->name('login');
+});
+
 Route::group(['prefix' => 'users'], function () {
     Route::get('/', 'UserController@index')->name('users');
     Route::post('/', 'UserController@create')->name('createsusers');

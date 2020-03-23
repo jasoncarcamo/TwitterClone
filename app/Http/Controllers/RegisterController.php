@@ -26,7 +26,7 @@ class RegisterController extends Controller
 
         $UserService = new UserService();
 
-        $hasUser = $UserService->getUser($request->input('email'));
+        $hasUser = $UserService->getUser($newUser->email);
 
         if($hasUser){
             return response( ['error'=> 'An account exists for this email already'] ,400);
@@ -38,6 +38,8 @@ class RegisterController extends Controller
             $request->input('name'), $request->input('email'), $request->input('password')
         ]);
 
-        return response( $newUser, 200);
+        $token = $UserService->createToken($newUser['email']);
+
+        return response( ['token'=> $token], 200);
     }
 }
