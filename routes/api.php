@@ -18,15 +18,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Register route
 Route::group(['prefix' => 'register'], function () {
     Route::post('/', 'RegisterController@register')->name('register');
 });
 
+//Login route
 Route::group(['prefix' => 'login'], function () {
-    Route::post('/', 'LoginController@login')->name('login')->middleware('jwtAuth');
+    Route::post('/', 'LoginController@login')->name('login');
 });
 
-Route::group(['prefix' => 'users'], function () {
+//Users routes
+Route::group([
+    'prefix' => 'users',
+    'middleware'=> 'jwtAuth'
+], function () {
     Route::get('/', 'UserController@index')->name('users');
     Route::post('/', 'UserController@create')->name('createsusers');
 });
