@@ -84,6 +84,7 @@ class TweetsController extends Controller
         $hasTweet = $TweetsService->getTweet($request->input('id'));
 
         if(!$hasTweet){
+            
             return response([
                 'error' => 'No tweet found'
             ], 404);

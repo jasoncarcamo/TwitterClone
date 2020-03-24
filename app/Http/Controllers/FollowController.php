@@ -61,8 +61,6 @@ class FollowController extends Controller
 
         $followRequest = $request;
 
-        echo(gettype($followRequest));
-
         $UserService = new UserService();
 
         $FollowService = new FollowService();

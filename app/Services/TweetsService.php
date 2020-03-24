@@ -37,8 +37,6 @@ class TweetsService
 
     public function deleteTweet($id)
     {
-        echo $id;
-
         $deleteTweet = DB::delete('delete from tweets where id = ?', [$id]);
 
         return $deleteTweet;
