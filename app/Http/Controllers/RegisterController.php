@@ -18,6 +18,7 @@ class RegisterController extends Controller
         //If the request request contains these form inputs continue
         $hasRequests = $request->validate([
             'name'=> 'required',
+            'screen_name' => 'required',
             'email'=>'required',
             'password'=>'required'
         ]);
@@ -35,7 +36,10 @@ class RegisterController extends Controller
         $newUser['password'] = $UserService->hashPassword($newUser['password']);
 
         $UserService->insertUser([
-            $request->input('name'), $request->input('email'), $request->input('password')
+            $newUser->name,
+            $newUser->screen_name,
+            $newUser->email,
+            $newUser->password
         ]);
 
         $token = $UserService->createToken($newUser['email']);

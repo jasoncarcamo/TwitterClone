@@ -21,9 +21,16 @@ class UserService
         return $hasUser;
     }
 
+    public function getUserById($id)
+    {
+        $user = DB::select('select * from users where id = ?', [$id]);
+
+        return $user;
+    }
+
     public function insertUser(Array $newUser)
     {
-        $insertUser = DB::insert('insert into users (name, email, password) values ( ?, ?, ?)', $newUser);
+        $insertUser = DB::insert('insert into users (name, screen_name, email, password) values ( ?, ?, ?, ?)', $newUser);
 
         return $insertUser;
     }

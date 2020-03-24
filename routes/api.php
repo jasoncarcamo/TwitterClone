@@ -31,7 +31,7 @@ Route::group([
     'prefix' => 'user',
 ], function () {
     Route::get('/', 'UserController@index')->name('user');
-    Route::post('/', 'UserController@create')->name('createsusers')->middleware('jwtAuth');
+    Route::post('/', 'UserController@create')->name('createsusers');
 });
 
 //Tweets routes
@@ -45,3 +45,20 @@ Route::group([
     Route::delete('/', 'TweetsController@deleteTweet')->name('deletetweet');
 });
 
+//Follow routes
+Route::group([
+    'prefix' => '/',
+    'middleware' => 'jwtAuth'
+], function () {
+
+    //Users followers
+    Route::get('/followers', 'FollowController@getFollowers')->name('followers');
+
+
+    //Users following
+    Route::get('/following', 'FollowController@getFollowing')->name('follwing');
+
+    //Follow route
+    Route::post('/follow', 'FollowController@followUser')->name('followuser');
+    Route::delete('/follow', 'FollowController@unfollowUser')->name('unfollowuser');
+});
