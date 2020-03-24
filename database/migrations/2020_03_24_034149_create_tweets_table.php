@@ -15,14 +15,14 @@ class CreateTweetsTable extends Migration
     {
         Schema::create('tweets', function (Blueprint $table) {
             $table->id();
-            $table->string('tweet_text');
-            $table->string('entities');
-            $table->timestamp('create_at');
-            $table->string('geo_lat');
-            $table->string('geo_long');
-            $table->string('screen_name');
-            $table->string('name');
-            $table->string('profile_image_url');
+            $table->string('tweet_text')->nullable();
+            $table->string('entities')->nullable();
+            $table->timestamp('create_at')->nullable();
+            $table->string('geo_lat')->nullable();
+            $table->string('geo_long')->nullable();
+            $table->string('screen_name')->nullable();
+            $table->string('name')->nullable();
+            $table->string('profile_image_url')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();
         });
