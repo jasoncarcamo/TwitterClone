@@ -5,14 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Services\UserService;
 
 class UserController extends Controller
 {
+
     public function index()
     {
-        $users = DB::select('select * from users');
+        $UserService = new UserService();
+
+        $users = $UserService->getUsers();
 
         return response($users, 200);
+
+    }
+
+    public function getUser()
+    {
 
     }
 
@@ -22,7 +31,7 @@ class UserController extends Controller
 
         $hashedPassword = "";
 
-        return response($request->input('address'), 200);
+        return response($request->input('email'), 200);
 
     }
 
@@ -31,5 +40,5 @@ class UserController extends Controller
 
     }
 
-    
+
 }

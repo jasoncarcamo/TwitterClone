@@ -21,7 +21,6 @@ class CreateUsersTable extends Migration
             $table->string('location')->nullable();
             $table->string('url')->nullable();
             $table->string('description')->nullable();
-            $table->timestamp('created_at');
             $table->string('followers_count')->nullable();
             $table->string('friends_count')->nullable();
             $table->string('statuses_counts')->nullable();
@@ -31,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->timestamp('created_at')->nullable();
         });
     }
 

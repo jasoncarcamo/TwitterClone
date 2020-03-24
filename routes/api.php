@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
 
 //Register route
 Route::group(['prefix' => 'register'], function () {
@@ -25,15 +23,25 @@ Route::group(['prefix' => 'register'], function () {
 
 //Login route
 Route::group(['prefix' => 'login'], function () {
-    Route::post('/', 'LoginController@login')->name('login');
+    Route::post('/', 'LoginController@login')->name('login')->middleware("cors");
 });
 
 //Users routes
 Route::group([
-    'prefix' => 'users',
-    'middleware'=> 'jwtAuth'
+    'prefix' => 'user',
 ], function () {
-    Route::get('/', 'UserController@index')->name('users');
-    Route::post('/', 'UserController@create')->name('createsusers');
+    Route::get('/', 'UserController@index')->name('user');
+    Route::post('/', 'UserController@create')->name('createsusers')->middleware('jwtAuth');
+});
+
+//Tweets routes
+Route::group([
+    'prefix' => 'tweets',
+    'middleware' => 'jwtAuth'
+], function () {
+    Route::get('/', 'TweetsController@getUsersTweets')->name('usertweets');
+    Route::post('/', 'TweetsController@createTweet')->name('createtweet');
+    Route::patch('/', 'TweetsController@updateTweet')->name('updatetweet');
+    Route::delete('/', 'TweetsController@deleteTweet')->name('deletetweet');
 });
 

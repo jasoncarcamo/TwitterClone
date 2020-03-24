@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Hash;
 
 class UserService
 {
+    public function getUsers()
+    {
+        $users = DB::select('select * from users');
+
+        return $users;
+    }
 
     public function getUser($email)
     {
