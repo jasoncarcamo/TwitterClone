@@ -9,7 +9,7 @@ use App\Services\UserService;
 class FollowController extends Controller
 {
 
-    //Get followers
+    //Get followers of current user
     public function getFollowers(Request $request)
     {
         $FollowService = new FollowService();
@@ -28,7 +28,7 @@ class FollowController extends Controller
         ], 200);
     }
 
-    //Get others users following current user
+    //Get all users the current user is following
     public function getFollowing(Request $request)
     {
 
