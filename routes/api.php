@@ -23,7 +23,7 @@ Route::group(['prefix' => 'register'], function () {
 });
 
 Route::group(['prefix' => 'login'], function () {
-    Route::post('/', 'LoginController@login')->name('login');
+    Route::post('/', 'LoginController@login')->name('login')->middleware('jwtAuth');
 });
 
 Route::group(['prefix' => 'users'], function () {
