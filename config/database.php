@@ -65,7 +65,7 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('postgresql://jason:carcamo11@localhost/twitter-clone-api'),
+            'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'twitter-clone-api'),
