@@ -33,6 +33,7 @@ class CheckAuth
         $payload = json_decode($UserService->verifyToken($bearerToken));
 
         if(!$payload){
+
             return response([
                 'error' => 'Unauthorized, Invalid user'
             ], 401);
@@ -41,6 +42,7 @@ class CheckAuth
         $user = $UserService->getUser($payload->email);
 
         if(!$user){
+            
             return response([
                 'error' => 'No user found with this email'
             ]);
