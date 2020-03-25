@@ -30,6 +30,7 @@ class RegisterController extends Controller
         $hasUser = $UserService->getUser($newUser->email);
 
         if($hasUser){
+            
             return response( [
                 'error'=> 'An account exists for this email already'
                 ] ,400);

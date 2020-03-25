@@ -21,6 +21,7 @@ class LoginController extends Controller
         $hasUser = $UserService->getUser($user->email);
 
         if(!$hasUser){
+            
             return response([
                 'error'=> "No user exists"
             ], 404);
@@ -29,7 +30,7 @@ class LoginController extends Controller
         $passwordMatches = $UserService->verifyPassword($user->password, $hasUser[0]->password);
 
         if(!$passwordMatches){
-            
+
             return response([
                 'error'=> 'The password does not match'
             ], 400);
