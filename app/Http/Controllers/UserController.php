@@ -22,6 +22,7 @@ class UserController extends Controller
 
     public function getUser(Request $request, $screen_name)
     {
+
         if(!$screen_name){
 
             return response([
@@ -31,7 +32,7 @@ class UserController extends Controller
 
         $UserService = new UserService();
 
-        $user = $UserService->getUser($request->input("screen_name"));
+        $user = $UserService->getUser($screen_name);
 
         if(!$user){
 
