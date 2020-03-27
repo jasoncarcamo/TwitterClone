@@ -30,8 +30,7 @@ Route::group([
 
     //Users routes
     Route::group([
-        'prefix' => 'user',
-        'middleware' => 'jwtAuth'
+        'prefix' => 'user'
     ], function () {
 
         //Route::get('/', 'UserController@index')->name('user');
