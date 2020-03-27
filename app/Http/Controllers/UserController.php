@@ -20,8 +20,33 @@ class UserController extends Controller
 
     }
 
-    public function getUser()
+    public function getUser(Request $request)
     {
+        if(!$request->input("email")){
+
+            return response([
+                'error' => 'Missing email in body request'
+            ], 400);
+        };
+
+        $UserService = new UserService();
+
+        $user = $UserService->getUser($request->input("email"));
+
+        if(!$user){
+
+            return response([
+                'error' => 'No user found'
+            ], 404);
+        };
+
+        return response([
+            'user' => [
+                'name' => $user[0]->name,
+                'screen_anem' => $user[0]->screen_name,
+                'email' => $user[0]->email
+            ]
+        ]);
 
     }
 

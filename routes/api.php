@@ -31,9 +31,13 @@ Route::group([
     //Users routes
     Route::group([
         'prefix' => 'user',
+        'middleware' => 'jwtAuth'
     ], function () {
-        Route::get('/', 'UserController@index')->name('user');
-        Route::post('/', 'UserController@create')->name('createsusers');
+
+        //Route::get('/', 'UserController@index')->name('user');
+        //Route::post('/', 'UserController@create')->name('createsusers');
+
+        Route::get('/', 'UserController@getUser')->name("getuser");
     });
 
     //Tweets routes
