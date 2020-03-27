@@ -20,12 +20,12 @@ class UserController extends Controller
 
     }
 
-    public function getUser(Request $request)
+    public function getUser(Request $request, $screen_name)
     {
-        if(!$request->input("screen_name")){
+        if(!$screen_name){
 
             return response([
-                'error' => 'Missing screen_name in body request'
+                'error' => 'Missing screen_name in params /api/user/{screen_name}'
             ], 400);
         };
 

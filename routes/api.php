@@ -36,7 +36,7 @@ Route::group([
         //Route::get('/', 'UserController@index')->name('user');
         //Route::post('/', 'UserController@create')->name('createsusers');
 
-        Route::get('/', 'UserController@getUser')->name("getuser");
+        Route::get('/{screen_name}', 'UserController@getUser')->name("getuser");
     });
 
     //Tweets routes
