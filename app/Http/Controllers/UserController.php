@@ -46,7 +46,7 @@ class UserController extends Controller
                 'screen_name' => $user[0]->screen_name,
                 'email' => $user[0]->email
             ]
-        ]);
+            ], 200);
 
     }
 
