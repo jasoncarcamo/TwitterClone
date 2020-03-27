@@ -22,16 +22,16 @@ class UserController extends Controller
 
     public function getUser(Request $request)
     {
-        if(!$request->input("email")){
+        if(!$request->input("screen_name")){
 
             return response([
-                'error' => 'Missing email in body request'
+                'error' => 'Missing screen_name in body request'
             ], 400);
         };
 
         $UserService = new UserService();
 
-        $user = $UserService->getUser($request->input("email"));
+        $user = $UserService->getUser($request->input("screen_name"));
 
         if(!$user){
 

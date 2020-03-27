@@ -14,9 +14,9 @@ class UserService
         return $users;
     }
 
-    public function getUser($email)
+    public function getUser($screen_name)
     {
-        $hasUser = DB::select('select * from users where email = ?', [$email]);
+        $hasUser = DB::select('select * from users where screen_name = ?', [$screen_name]);
 
         return $hasUser;
     }
