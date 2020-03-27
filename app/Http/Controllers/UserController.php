@@ -43,7 +43,7 @@ class UserController extends Controller
         return response([
             'user' => [
                 'name' => $user[0]->name,
-                'screen_anem' => $user[0]->screen_name,
+                'screen_name' => $user[0]->screen_name,
                 'email' => $user[0]->email
             ]
         ]);
